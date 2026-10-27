@@ -20,3 +20,20 @@ disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
     macosIntel = "[DOWNLOAD URL macOS amd64]"
     windows = "[DOWNLOAD URL Windows]"
     linux = "[DOWNLOAD URL Linux]"
+
+[menu]
+  [[menu.main]]
+    identifier = "docs"
+    name = "Docs"
+    url = "/docs/"
+    weight = 10
+  [[menu.main]]
+    identifier = "changelog"
+    name = "Changelog"
+    url = "/changelog/"
+    weight = 20
+  [[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/"
+    weight = 30
