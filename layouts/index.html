@@ -1,0 +1,230 @@
+{{ define "main" }}
+
+<!-- HERO -->
+<section id="top" class="hero container">
+  <a class="pill" href="{{ site.Params.changelog }}">
+    <span class="pill-tag">{{ .Params.version }}</span>
+    {{ .Params.badge }}
+  </a>
+  <h1>{{ .Params.headline }}</h1>
+  <p class="lead">{{ .Params.subhead }}</p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary btn-lg" href="#download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download for macOS
+    </a>
+    <a class="btn btn-outline btn-lg" href="#download">Other platforms</a>
+  </div>
+  <p class="mono-note">{{ .Params.platforms }}</p>
+</section>
+
+<!-- HERO SCREENSHOT behind the "wall" -->
+<section class="shot container-wide">
+  <div class="window">
+    <div class="window-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="window-title">localhost · static_studio</span>
+    </div>
+    <img class="window-img" src="{{ "images/ide.png" | relURL }}" alt="Static Studio editing getting-started.md: page tree on the left, frontmatter fields for title, date, tags and draft, and the Markdown body below">
+  </div>
+  <div class="wall" aria-hidden="true"></div>
+</section>
+
+<!-- WORKS WITH -->
+<section class="works container">
+  <p class="eyebrow">Works with your static site generator</p>
+  <div class="chips">
+    <div class="ssg-chip">
+      <span class="ssg-name">Hugo</span>
+      <span class="tag tag-ok">supported</span>
+    </div>
+    <div class="ssg-chip ssg-chip-soon">
+      <span class="ssg-name">Astro</span>
+      <span class="tag">detected · editing soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features container">
+  <div class="section-head">
+    <h2>Everything a content edit needs. Nothing it doesn't.</h2>
+    <p>Your site stays a normal Hugo project — Markdown files on disk, in your repo. Static Studio is just a far nicer way to work on them.</p>
+  </div>
+
+  <!-- 01 Content tree -->
+  <div class="feature">
+    <div class="feature-text">
+      <span class="kicker">01 — Content tree</span>
+      <h3>See your site the way readers do.</h3>
+      <p>Pages show up by their title, not their filename, nested exactly as in <code>content/</code>. Unsaved pages get a dot. Jump anywhere with <kbd>Ctrl</kbd> <kbd>K</kbd>.</p>
+    </div>
+    <div class="feature-visual panel tree">
+      <div class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        Search pages…
+      </div>
+      <div class="tree-row folder">▾ &nbsp;docs</div>
+      <div class="tree-row l1">Docs</div>
+      <div class="tree-row l1 active">Getting Started</div>
+      <div class="tree-row folder">▾ &nbsp;posts</div>
+      <div class="tree-row l1 folder">▾ &nbsp;2026</div>
+      <div class="tree-row l2">Nested Post</div>
+      <div class="tree-row l1">Hello World</div>
+      <div class="tree-row l1 dirty">Work in Progress<span class="dirty-dot"></span></div>
+      <div class="tree-row">Home</div>
+    </div>
+  </div>
+
+  <!-- 02 Frontmatter -->
+  <div class="feature feature-reverse">
+    <div class="feature-text">
+      <span class="kicker">02 — Frontmatter</span>
+      <h3>Frontmatter, as a form.</h3>
+      <p>YAML and TOML frontmatter turn into proper fields: text, dates, tags and a draft switch. No more broken indentation, no more guessing the date format.</p>
+    </div>
+    <div class="feature-visual panel form">
+      <div class="form-head"><strong>Properties</strong><span class="mono">YAML</span></div>
+      <div class="form-grid">
+        <label>Title<input type="text" value="Getting Started" readonly></label>
+        <label>Date<input class="mono" type="text" value="2026-08-01 08:00" readonly></label>
+      </div>
+      <div class="field">Tags
+        <div class="tags"><span>hugo</span><span>install</span><span>guide</span></div>
+      </div>
+      <label class="check"><input type="checkbox"> Draft — keep it off the live site</label>
+    </div>
+  </div>
+
+  <!-- 03 Editor & preview -->
+  <div class="feature-stack">
+    <div class="feature-text narrow">
+      <span class="kicker">03 — Editor &amp; preview</span>
+      <h3>Write Markdown. Watch the page.</h3>
+      <p>A fast CodeMirror editor with syntax highlighting on one side, your real Hugo-rendered page on the other — updated as you type.</p>
+    </div>
+    <div class="panel split">
+      <div class="split-code">
+<pre><span class="dim">## </span><b>Install</b>
+
+Some text, a list and code:
+
+<span class="dim">-</span> one
+<span class="dim">-</span> two
+
+<span class="muted">```sh</span>
+<span class="green">hugo server</span>
+<span class="muted">```</span></pre>
+      </div>
+      <div class="split-preview">
+        <div class="pv-h">Install</div>
+        <p>Some text, a list and code:</p>
+        <ul><li>one</li><li>two</li></ul>
+        <div class="pv-code">hugo server</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Build & serve -->
+  <div class="feature">
+    <div class="feature-text">
+      <span class="kicker">04 — Build &amp; serve</span>
+      <h3>One click instead of a terminal.</h3>
+      <p>Start the dev server or run a full build from the toolbar. Output streams in live, so you see errors the moment Hugo does.</p>
+    </div>
+    <div class="feature-visual panel terminal">
+      <div class="term-bar">
+        <span class="term-status"><span class="ok-dot"></span>hugo server · running</span>
+        <span class="mono muted">:1313</span>
+      </div>
+      <div class="term-body">
+        <div class="muted">$ hugo server --buildDrafts</div>
+        <div>Watching for changes in content, layouts, static</div>
+        <div>Built in [N] ms</div>
+        <div>Environment: "development"</div>
+        <div>Web Server is available at <span class="accent">http://localhost:1313/</span></div>
+        <div class="green">Change detected, rebuilding site (getting-started.md)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 + 06 -->
+  <div class="card-pair">
+    <div class="panel card">
+      <span class="kicker">05 — Assets</span>
+      <h3>Drop an image, get a link.</h3>
+      <p>Drag files into the editor. They land in the right folder and the Markdown is written for you.</p>
+      <div class="dropzone">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+        <span class="mono">![hero](images/hero.jpg)</span>
+      </div>
+    </div>
+    <div class="panel card">
+      <span class="kicker">06 — Publish</span>
+      <h3>Ship it from the same window.</h3>
+      <p>When the page is ready, publish to {{ site.Params.publishTarget }} with one action. No CI config to learn.</p>
+      <div class="publish-row">
+        <span>Build succeeded · ready to publish</span>
+        <span class="publish-btn">Publish</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section id="details" class="details container">
+  <h2>Small details, done properly.</h2>
+  <div class="detail-grid">
+    <div class="detail">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+      <h3>Local-first</h3>
+      <p>Runs on your machine. No account, no cloud copy of your content.</p>
+    </div>
+    <div class="detail">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+      <h3>Plain files, always</h3>
+      <p>Everything stays Markdown in your repo. Stop using Static Studio any day — nothing to migrate.</p>
+    </div>
+    <div class="detail">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+      <h3>One Go binary</h3>
+      <p>Download, run, done. The UI opens in the browser you already have.</p>
+    </div>
+    <div class="detail">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>
+      <h3>Keyboard friendly</h3>
+      <p>Search, save and switch pages without reaching for the mouse.</p>
+    </div>
+    <div class="detail">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+      <h3>YAML &amp; TOML</h3>
+      <p>Both frontmatter formats read and written — even pages with none at all.</p>
+    </div>
+    <div class="detail">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+      <h3>Built to grow</h3>
+      <p>Astro projects are already detected. Editing support is on the roadmap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="download container">
+  <div class="cta-box">
+    <h2>Open your Hugo site in Static Studio.</h2>
+    <p>Free and open source under {{ site.Params.license }}. Point it at a folder and start writing.</p>
+    <div class="dl-grid">
+      <a class="dl dl-primary" href="{{ site.Params.downloads.macosArm }}"><b>macOS</b><span>Apple Silicon</span></a>
+      <a class="dl" href="{{ site.Params.downloads.macosIntel }}"><b>macOS</b><span>Intel</span></a>
+      <a class="dl" href="{{ site.Params.downloads.windows }}"><b>Windows</b><span>x64</span></a>
+      <a class="dl" href="{{ site.Params.downloads.linux }}"><b>Linux</b><span>x64 · arm64</span></a>
+    </div>
+    <div class="go-install">
+      <span class="muted">or</span>
+      <code>go install {{ site.Params.goModule }}@latest</code>
+    </div>
+    <a class="underline" href="{{ site.Params.releases }}">All releases &amp; changelog</a>
+  </div>
+</section>
+
+{{ end }}

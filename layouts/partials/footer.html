@@ -1,0 +1,29 @@
+<footer class="site-footer container">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="brand">
+        <img src="{{ "images/logo.png" | relURL }}" alt="" width="26" height="26">
+        <span>static_studio</span>
+      </span>
+      <p>A local editor for static sites. Built with Go and Vue.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <span class="footer-label">Product</span>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+        <a href="{{ site.Params.changelog }}">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-label">Resources</span>
+        <a href="{{ site.Params.docs }}">Docs</a>
+        <a href="{{ site.Params.github }}">GitHub</a>
+        <a href="{{ site.Params.issues }}">Report an issue</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© {{ now.Year }} {{ site.Params.author }}</span>
+    <span>{{ site.Params.license }} licensed</span>
+  </div>
+</footer>

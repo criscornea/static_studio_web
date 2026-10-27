@@ -1,0 +1,22 @@
+baseURL = "https://example.org/" # [YOUR DOMAIN]
+languageCode = "en-us"
+title = "Static Studio"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+
+[params]
+  description = "A local editor for Hugo sites: content tree, frontmatter forms, Markdown with live preview, build, serve and publish."
+  author = "[YOUR NAME]"
+  license = "[LICENSE]"
+  github = "[GITHUB URL]"
+  docs = "[DOCS URL]"
+  changelog = "[CHANGELOG URL]"
+  issues = "[ISSUES URL]"
+  releases = "[RELEASES URL]"
+  goModule = "[MODULE PATH]"
+  publishTarget = "[YOUR PUBLISH TARGET]"
+
+  [params.downloads]
+    macosArm = "[DOWNLOAD URL macOS arm64]"
+    macosIntel = "[DOWNLOAD URL macOS amd64]"
+    windows = "[DOWNLOAD URL Windows]"
+    linux = "[DOWNLOAD URL Linux]"
