@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editing · Static Studio</title>
+  <meta name="description" content="A local editor for Hugo sites: content tree, frontmatter forms, Markdown with live preview, build, serve and publish.">
+  <link rel="icon" href="/static_studio_web/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="/static_studio_web/css/main.css">
+</head>
+<body>
+  <header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="/static_studio_web/">
+      <img src="/static_studio_web/images/logo.png" alt="Static Studio logo" width="30" height="30">
+      <span>Static Studio</span>
+    </a>
+    <div class="nav-links">
+      
+      <a href="/static_studio_web/#features">Features</a>
+      <a href="/static_studio_web/#details">Details</a>
+      <a href="/static_studio_web/#download">Download</a>
+      
+      <a href="/static_studio_web/docs/">Docs</a>
+      
+      <a href="/static_studio_web/changelog/">Changelog</a>
+      
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-outline btn-sm" href="https://github.com/criscornea/static_studio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-primary btn-sm" href="/static_studio_web/#download">Download</a>
+    </div>
+  </nav>
+</header>
+
+  <main>
+    
+<article class="doc container">
+  <header class="doc-head">
+    <h1>Editing</h1>
+    <p class="lead">Browse the content tree, edit Markdown and frontmatter, and add images.</p>
+  </header>
+  <div class="doc-body">
+    <h2 id="content-tree">Content tree</h2>
+<p>The sidebar shows every Hugo content directory as a tree, with pages listed by title. You can search titles, tags and bodies (Ctrl/Cmd+K), sort by name, title or date, and filter by draft status and tag. Create a page from an archetype with the plus button, and rename or delete pages from the right-click menu.</p>
+<h2 id="markdown-editor">Markdown editor</h2>
+<p>The editor is CodeMirror 6 with GFM Markdown. It autosaves after a 1.5 second pause and on page switch, and shows a Saved, Unsaved, Saving or Conflict state. If the file changed on disk, the save is reported as a conflict instead of overwriting your external change.</p>
+<p>Live preview renders headings, bold, italic, links, quotes and lists inline, and shows the markup only on lines the cursor touches. A switch in the editor header returns to plain source. A floating toolbar offers headings, bold, italic, code, link, lists and quote.</p>
+<h2 id="frontmatter">Frontmatter</h2>
+<p>A form above the editor edits title, date, draft and tags. Unknown keys are kept. Comments and TOML key order are not.</p>
+<h2 id="images">Images</h2>
+<p>Drop an image onto the editor to upload it to <code>&lt;assetDir&gt;/images/</code> and insert <code>![](/images/name.png)</code>. PNG, JPEG, GIF and WebP up to 10 MB are accepted, and existing files are never overwritten.</p>
+<h2 id="command-palette">Command palette</h2>
+<p>Ctrl/Cmd+Shift+P opens the command palette, Ctrl/Cmd+P opens quick-open for pages, and Ctrl/Cmd+/ lists every shortcut.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer container">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="brand">
+        <img src="/static_studio_web/images/logo.png" alt="" width="26" height="26">
+        <span>Static Studio</span>
+      </span>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <span class="footer-label">Product</span>
+        <a href="/static_studio_web/#features">Features</a>
+        <a href="/static_studio_web/#download">Download</a>
+        <a href="/static_studio_web/changelog/">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-label">Resources</span>
+        <a href="/static_studio_web/docs/">Docs</a>
+        <a href="https://github.com/criscornea/static_studio">GitHub</a>
+        <a href="https://github.com/criscornea/static_studio/issues">Report an issue</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Static Studio</span>
+    <span>MIT licensed</span>
+  </div>
+</footer>
+
+</body>
+</html>

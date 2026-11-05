@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Changelog · Static Studio</title>
+  <meta name="description" content="A local editor for Hugo sites: content tree, frontmatter forms, Markdown with live preview, build, serve and publish.">
+  <link rel="icon" href="/static_studio_web/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="/static_studio_web/css/main.css">
+</head>
+<body>
+  <header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="/static_studio_web/">
+      <img src="/static_studio_web/images/logo.png" alt="Static Studio logo" width="30" height="30">
+      <span>Static Studio</span>
+    </a>
+    <div class="nav-links">
+      
+      <a href="/static_studio_web/#features">Features</a>
+      <a href="/static_studio_web/#details">Details</a>
+      <a href="/static_studio_web/#download">Download</a>
+      
+      <a href="/static_studio_web/docs/">Docs</a>
+      
+      <a href="/static_studio_web/changelog/">Changelog</a>
+      
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-outline btn-sm" href="https://github.com/criscornea/static_studio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-primary btn-sm" href="/static_studio_web/#download">Download</a>
+    </div>
+  </nav>
+</header>
+
+  <main>
+    
+<article class="doc container">
+  <header class="doc-head">
+    <h1>Changelog</h1>
+    <p class="lead">Release history for Static Studio.</p>
+  </header>
+  <div class="doc-body">
+    <h2 id="unreleased">[Unreleased]</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>rsync over SSH publish target alongside GitHub Pages. The publish dialog has
+a target picker with destination (<code>user@host:path</code> or a full local path),
+port, optional identity file, a delete option (with a warning) and a dry
+run. The system <code>rsync</code> runs with an argv only, no shell, from <code>public/</code>
+without following symlinks. SSH uses <code>BatchMode</code>, your agent, config and
+<code>known_hosts</code>; host key checking is never turned off and no credentials are
+stored. Unknown host keys, refused logins, missing programs and unreachable
+hosts give readable messages. Existing settings load as GitHub Pages.</li>
+<li>Live preview in the editor: headings, bold, italic, strikethrough, inline
+code, links, quotes, list markers and horizontal rules render inline, with
+the markup revealed only on lines touched by the cursor or selection. Code
+blocks and HTML stay as source and the document text is never changed. A
+live-preview/source switch (default live preview, saved in localStorage) is
+in the editor header, the status bar and the command palette.</li>
+<li>Floating formatting toolbar at the bottom center of the editor: H1-H3, bold,
+italic, strikethrough, inline code, link, bullet and numbered lists and
+quote. Active formats are highlighted from the markdown syntax tree. It shows
+only while the editor has focus. Ctrl/Cmd+B, I and K format inside the
+editor; outside it Mod+B still toggles the sidebar and Mod+K focuses search.
+Every action is also in the command palette (group Format) and the shortcuts
+dialog marks the editor-only bindings. The editor now parses GFM markdown.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>The content tree and search read pages through a per-project cached index
+validated by size, mtime and file identity, so unchanged pages are not read
+again. On a generated 5,000-page site a warm tree load is about 35x faster
+and a warm search about 30x faster. External edits are still picked up on
+the next load.</li>
+<li>Save and delete move the file aside, verify its hash there and only then
+replace or remove it, so a change made by an external editor in between is
+reported as a conflict instead of being lost. A file recreated at the name
+is kept. Rename verifies the moved file is the one it checked.</li>
+<li><code>DELETE /api/page</code> requires <code>hash</code>, the hash of the page as last read; the
+delete dialog reads the page first when it is not open.</li>
+</ul>
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Pages in every resolved content dir can be opened, saved, created, renamed
+(also between dirs) and deleted; paths outside all of them, including
+sibling-prefix names like <code>content-old/</code>, are refused. <code>POST /api/page</code>
+takes an optional <code>dir</code>, and the new-page dialog has a content folder picker.</li>
+<li>Every Hugo content dir is resolved (per-language <code>contentDir</code>, project-local
+content and static module mounts; unsafe sources are skipped). The sidebar
+shows one labelled tree per dir and search covers all of them.</li>
+<li>Desktop-style app shell: fixed viewport, title bar, activity bar,
+resizable sidebar, status bar (project, save, preview server, build).</li>
+<li>Light and dark themes following the OS, with a persisted override;
+compact design tokens.</li>
+<li>Sidebar width and collapsed state persist; Ctrl/Cmd+B toggles it.</li>
+<li>Project picker restyled as a centered welcome screen.</li>
+<li>Explorer sidebar: icon toolbar with tooltips, sort and filter menu,
+collapse all, compact search, single-line tree rows with icons, indent
+guides, draft and error markers, keyboard navigation and a right-click
+menu (open, new page here, rename, delete, copy path).</li>
+<li>Editor chrome: header with path breadcrumb, save state and icon actions
+(preview, preview server, build, publish) with tooltips; full-height
+CodeMirror editor following the app theme; collapsible properties panel;
+resizable side-by-side preview; resizable build log panel toggled from
+the status bar or Ctrl/Cmd+J. Panel sizes and open states persist.</li>
+<li>Command palette (Ctrl/Cmd+Shift+P) and quick-open for pages (Ctrl/Cmd+P),
+both backed by one command registry and one global shortcut handler that
+leaves keys to the editor and open dialogs; a keyboard shortcuts dialog
+(Ctrl/Cmd+/) lists every binding.</li>
+<li>Finished empty and loading states (icon, one line, action; skeletons)
+in the sidebar, search, editor, preview and build log.</li>
+</ul>
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>
+<p><code>contentDir</code> and <code>staticDir</code> are resolved from the merged Hugo config:
+root file, <code>config/_default/*</code>, <code>config/&lt;environment&gt;/*</code> (from
+<code>HUGO_ENVIRONMENT</code>, else <code>development</code>) and the <code>HUGO_CONTENTDIR</code> and
+<code>HUGO_STATICDIR</code> environment variables.</p>
+</li>
+<li>
+<p>App chrome is not text-selectable, uses the default cursor and shows
+focus rings only for keyboard focus; editor text, logs and inputs stay
+selectable.</p>
+</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>An unreadable, oversized or invalid Hugo config now stops the project
+from opening and names the file and reason (<code>invalid_config</code>) instead of
+silently using default directories.</li>
+<li>Generated UI components no longer depend on the third-party <code>cn</code> package;
+they use the local helper in <code>web/src/lib/utils.ts</code>.</li>
+</ul>
+<h3 id="added-2">Added</h3>
+<ul>
+<li>
+<p><code>-log-level</code> and <code>-log-format</code> (<code>text</code> or <code>json</code>) flags.</p>
+</li>
+<li>
+<p>Readable UI messages for API error codes (<code>web/src/lib/errors.ts</code>).</p>
+</li>
+<li>
+<p>Tests for store write failures and opening a missing project folder.</p>
+</li>
+<li>
+<p>README: problem, quickstart, architecture and scope.</p>
+</li>
+<li>
+<p>Release workflow: a <code>v*</code> tag builds Linux, macOS and Windows binaries and
+attaches them to a GitHub release.</p>
+</li>
+<li>
+<p>Publish to GitHub Pages: the Publish button saves a remote and branch (kept in the
+user config dir, per project; default <code>gh-pages</code>), runs a Hugo build, then commits
+<code>public/</code> in a temporary repository and force-pushes it with the system <code>git</code>. No
+credentials are stored; the user&rsquo;s SSH key or credential helper signs in. Progress
+streams over <code>GET /api/publish/stream</code>; settings use <code>GET</code>/<code>PUT /api/publish/settings</code>,
+and <code>POST /api/publish</code> and <code>/api/publish/cancel</code> control the run.</p>
+</li>
+<li>
+<p>Recent projects: the open screen lists the last 10 opened projects (kept in the
+user config dir) with one-click open, remove, and greyed-out missing folders.</p>
+</li>
+<li>
+<p>Build errors: Hugo error lines are parsed into file, line and message and sent
+as <code>problems</code> on the build stream&rsquo;s <code>done</code> event. The tree marks affected pages,
+the build panel lists them, and clicking one opens the page and moves the editor
+to the line. Pages now also report <code>bodyLine</code>.</p>
+</li>
+<li>
+<p>Preview: start/stop a <code>hugo server</code> bound to 127.0.0.1 on a free port
+(<code>GET /api/devserver</code>, <code>POST /api/devserver/start</code>, <code>POST /api/devserver/stop</code>).
+The Preview button shows the open page in an iframe loaded directly from the
+server&rsquo;s own port, so site scripts cannot reach <code>/api</code>. The server is stopped
+on project close, project switch and shutdown, which also closes the project root.</p>
+</li>
+<li>
+<p>Build button runs <code>hugo</code> in the project root (one build at a time, cancellable)
+and streams its output live to a log panel over SSE
+(<code>POST /api/build</code>, <code>POST /api/build/cancel</code>, <code>GET /api/build/stream</code>).</p>
+</li>
+<li>
+<p>Drop an image onto the editor to upload it to <code>&lt;assetDir&gt;/images/</code> and insert
+<code>![](/images/name.png)</code>. <code>POST /api/asset</code> accepts PNG, JPEG, GIF and WebP up to
+10 MB, checks the bytes, never overwrites (a clash adds <code>-1</code>, <code>-2</code>, &hellip;; a name
+with no usable characters gets a generated one) and stays inside the project.</p>
+</li>
+<li>
+<p>Autosave after a 1.5 s pause and on page switch, with saves serialised,
+a Saved/Unsaved/Saving/Conflict indicator, a beforeunload warning and
+editor undo/redo. A hash conflict stops autosave.</p>
+</li>
+<li>
+<p>Frontmatter form (title, date, draft, tags) above the editor. <code>PUT /api/page</code>
+accepts optional <code>fields</code>; unknown keys are kept, comments and TOML key order
+are not.</p>
+</li>
+<li>
+<p>CodeMirror 6 markdown editor with save (button and Ctrl/Cmd+S). Pages carry a
+sha256 hash; <code>PUT /api/page</code> keeps frontmatter verbatim, writes atomically and
+returns 409 when the file changed on disk.</p>
+</li>
+<li>
+<p>Rename/move and delete a page: <code>POST /api/page/rename</code> and <code>DELETE /api/page</code>
+(confined to the content dir, never overwrite, editable files only) with
+sidebar rename and delete-confirm dialogs.</p>
+</li>
+<li>
+<p>Atomic, root-confined file writes (temp file, fsync, rename); new pages
+are published by hard link so an existing file is never replaced.</p>
+</li>
+<li>
+<p><code>/api</code> requests with a non-loopback <code>Host</code> (DNS rebinding) or a mutating
+request with a foreign <code>Origin</code> are refused with 403; the Vite dev origin
+works because <code>Origin</code> must match <code>Host</code>.</p>
+</li>
+<li>
+<p>Project detection for Hugo, covering both the <code>hugo.*</code> and legacy
+<code>config.*</code> file names and the <code>config/_default/</code> layout. Astro projects
+are recognised and rejected with a clear message rather than being
+reported as unrecognised.</p>
+</li>
+<li>
+<p>Project lifecycle API: open, get and close. The backend holds one open
+project at a time and issues an id per open, which clients must send with
+every request that touches project files.</p>
+</li>
+<li>
+<p>All filesystem access is confined to the open project&rsquo;s directory via
+<code>os.Root</code>, rejecting parent traversal, absolute paths and symlinks that
+point outside it.</p>
+</li>
+<li>
+<p>Content tree endpoint returning the editable files of the open project,
+with directories sorted before files and empty directories pruned.</p>
+</li>
+<li>
+<p>React 19 frontend (Vite, Tailwind v4, shadcn/ui) with a typed API client,
+Zustand stores for the open project and page, a folder picker, a file
+tree and a resizable sidebar. A page reload reconnects to the project the
+backend already has open. Migrated from an initial Vue 3 scaffold.</p>
+</li>
+<li>
+<p>Content tree entries carry their frontmatter (title, date, draft, tags),
+and the file tree shows the title, filename, date and a draft badge.</p>
+</li>
+<li>
+<p>Sort the file tree by name, title or date, filter it by draft status and
+tag, and search page titles, tags and bodies from a box in the sidebar
+(Ctrl/Cmd+K focuses it). Search is served by <code>GET /api/search</code>.</p>
+</li>
+<li>
+<p>Create a page from the sidebar&rsquo;s plus button: choose a name, a folder and a
+template (Hugo archetype, or a built-in default). The page is written
+without ever overwriting an existing file, and opens straight away.
+Served by <code>GET /api/archetypes</code> and <code>POST /api/page</code>.</p>
+</li>
+<li>
+<p>Hugo&rsquo;s <code>contentDir</code> and <code>staticDir</code> are read from the config file instead
+of being hardcoded. Missing, invalid or out-of-project values fall back to
+the defaults.</p>
+</li>
+<li>
+<p>The built frontend is embedded into the binary, so a release is a single
+file.</p>
+</li>
+<li>
+<p>Project skeleton: Makefile with a single <code>make check</code>, <code>golangci-lint</code>,
+GitHub Actions CI mirroring it, and structured logging throughout.</p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer container">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="brand">
+        <img src="/static_studio_web/images/logo.png" alt="" width="26" height="26">
+        <span>Static Studio</span>
+      </span>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <span class="footer-label">Product</span>
+        <a href="/static_studio_web/#features">Features</a>
+        <a href="/static_studio_web/#download">Download</a>
+        <a href="/static_studio_web/changelog/">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-label">Resources</span>
+        <a href="/static_studio_web/docs/">Docs</a>
+        <a href="https://github.com/criscornea/static_studio">GitHub</a>
+        <a href="https://github.com/criscornea/static_studio/issues">Report an issue</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Static Studio</span>
+    <span>MIT licensed</span>
+  </div>
+</footer>
+
+</body>
+</html>
