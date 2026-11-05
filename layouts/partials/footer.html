@@ -3,14 +3,14 @@
     <div class="footer-brand">
       <span class="brand">
         <img src="{{ "images/logo.png" | relURL }}" alt="" width="26" height="26">
-        <span>static_studio</span>
+        <span>{{ site.Title }}</span>
       </span>
     </div>
     <div class="footer-cols">
       <div class="footer-col">
         <span class="footer-label">Product</span>
-        <a href="{{ cond .IsHome "" "/" }}#features">Features</a>
-        <a href="{{ cond .IsHome "" "/" }}#download">Download</a>
+        <a href="{{ cond .IsHome "" site.Home.RelPermalink }}#features">Features</a>
+        <a href="{{ cond .IsHome "" site.Home.RelPermalink }}#download">Download</a>
         <a href="{{ "changelog/" | relURL }}">Changelog</a>
       </div>
       <div class="footer-col">

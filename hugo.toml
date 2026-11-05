@@ -1,4 +1,4 @@
-baseURL = "https://example.org/" # [YOUR DOMAIN]
+baseURL = "https://criscornea.github.io/static_studio_web/"
 languageCode = "en-us"
 title = "Static Studio"
 disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
@@ -7,19 +7,19 @@ disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
   description = "A local editor for Hugo sites: content tree, frontmatter forms, Markdown with live preview, build, serve and publish."
   author = "Static Studio"
   license = "MIT"
-  github = "[GITHUB URL]"
+  github = "https://github.com/criscornea/static_studio"
   docs = "[DOCS URL]"
   changelog = "[CHANGELOG URL]"
-  issues = "[ISSUES URL]"
-  releases = "[RELEASES URL]"
-  goModule = "[MODULE PATH]"
+  issues = "https://github.com/criscornea/static_studio/issues"
+  releases = "https://github.com/criscornea/static_studio/releases"
+  goModule = "github.com/criscornea/static_studio/cmd/studio"
   publishTarget = "[YOUR PUBLISH TARGET]"
 
   [params.downloads]
-    macosArm = "[DOWNLOAD URL macOS arm64]"
-    macosIntel = "[DOWNLOAD URL macOS amd64]"
-    windows = "[DOWNLOAD URL Windows]"
-    linux = "[DOWNLOAD URL Linux]"
+    macosArm = "https://github.com/criscornea/static_studio/releases"
+    macosIntel = "https://github.com/criscornea/static_studio/releases"
+    windows = "https://github.com/criscornea/static_studio/releases"
+    linux = "https://github.com/criscornea/static_studio/releases"
 
 [menu]
   [[menu.main]]
@@ -35,5 +35,5 @@ disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
   [[menu.main]]
     identifier = "github"
     name = "GitHub"
-    url = "https://github.com/"
+    url = "https://github.com/criscornea/static_studio"
     weight = 30
